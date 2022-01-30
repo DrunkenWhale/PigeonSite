@@ -3,10 +3,10 @@ from rosemary.model import User
 from werkzeug.security import generate_password_hash
 from rosemary.extension import db, res
 
-auth_register_bp = Blueprint('register', __name__, url_prefix='/api/auth')
+register_bp = Blueprint('register', __name__, url_prefix='/api/auth')
 
 
-@auth_register_bp.post("/register")
+@register_bp.post("/register")
 def register():
     mailbox = request.form.get("mailbox")
     password = request.form.get("password")

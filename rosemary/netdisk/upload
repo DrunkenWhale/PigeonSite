@@ -1,5 +1,0 @@
-
-
-@app
-def file_upload():
-    return

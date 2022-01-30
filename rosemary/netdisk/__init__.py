@@ -1,4 +1,5 @@
 from flask import Flask
+from rosemary.netdisk.upload import upload_bp
 
-def register(app:Flask):
-    app.register_blueprint()
+def netdisk_register_blueprints(app: Flask):
+    app.register_blueprint(upload_bp)
