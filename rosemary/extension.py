@@ -7,6 +7,8 @@ db: SQLAlchemy = SQLAlchemy()
 
 
 def res(data=None):
+    if data is None:
+        data = {}
     return jsonify(data)
 
 
