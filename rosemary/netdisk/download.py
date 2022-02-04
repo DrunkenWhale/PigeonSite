@@ -14,7 +14,7 @@ dir_path = getcwd() + sep + "repository" + sep
 @need_login
 def file_list(mailbox):
     result_list = []
-    user_id = str(User.query.filter_by(mailbox=mailbox).first())
+    user_id = str(User.query.filter_by(mailbox=mailbox).first().id)
     user_dir_path = dir_path + user_id + sep
     for file in listdir(user_dir_path):
         result_list.append({
