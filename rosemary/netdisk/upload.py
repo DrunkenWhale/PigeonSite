@@ -14,7 +14,7 @@ if not path.exists(directory_path):
 @upload_bp.post("/upload")
 @need_login
 def file_upload(mailbox):
-    file = request.files['upload_file']
+    file = request.files['file']
     filename = file.filename
     if ".." in filename or "/" in filename:
         return res(), 702
