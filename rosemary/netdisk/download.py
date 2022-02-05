@@ -2,7 +2,6 @@ from flask import Blueprint, request, send_file
 from rosemary.model import User
 from rosemary.extension import need_login, res
 from os import getcwd, sep, path, mkdir, listdir
-import datetime
 
 download_bp = Blueprint('download', __name__, url_prefix='/api/file')
 
