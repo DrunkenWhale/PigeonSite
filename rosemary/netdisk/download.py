@@ -27,9 +27,9 @@ def file_list(mailbox):
 @download_bp.get("/download")
 @need_login
 def file_download(mailbox):
-    filename = request.args.get("file_name",None)
+    filename = request.args.get("file_name", None)
     user_id = str(User.query.filter_by(mailbox=mailbox).first().id)
     if filename is None:
-        return res(),702
+        return res(), 702
     file_path = dir_path + user_id + sep + filename
     return send_file(file_path)
