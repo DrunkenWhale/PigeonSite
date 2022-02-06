@@ -16,4 +16,4 @@ def login():
     if user is None or not check_password_hash(pwhash=user.password, password=password):
         return res(), 700
     else:
-        return res({"token": str(generate_token(mailbox))[2:-1]}), 200
+        return res({"token": str(generate_token(mailbox))}), 200
