@@ -10,7 +10,6 @@ class User(db.Model):
     # user_message = db.relationship("Message")  #foreign key
 
     def __init__(self, mailbox, name, password):
-        self.id = 0
         self.mailbox = mailbox
         self.name = name
         self.password = password
