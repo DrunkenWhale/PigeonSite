@@ -33,7 +33,7 @@ def walk(obj):
     f.close()
 
 
-@sex_pic_bp.post("/expand/")
+@sex_pic_bp.put("/")
 @need_login
 def expend_sex_picture_repository(mailbox):
     thread_list = []
