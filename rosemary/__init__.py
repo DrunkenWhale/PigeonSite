@@ -3,6 +3,7 @@ from flask_cors import CORS
 from rosemary.extension import db
 from rosemary.auth import auth_register_blueprints
 from rosemary.netdisk import netdisk_register_blueprints
+from rosemary.sex import sex_register_blueprints
 from rosemary.config import Config
 import os
 
@@ -22,6 +23,7 @@ def create_app(name=__name__):
 def register_blueprints(app):
     auth_register_blueprints(app)
     netdisk_register_blueprints(app)
+    sex_register_blueprints(app)
 
 
 def register_extensions(app):
