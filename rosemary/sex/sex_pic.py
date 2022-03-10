@@ -62,7 +62,7 @@ def get_random_sex_picture_name(mailbox):
 def get_random_sex_picture():
     name = request.args.get("pic")
     if name is None:
-        return "", 703
+        return "", 702
     if path.exists(directory_path + sep + name):
         return send_file(directory_path + sep + name)
     else:
