@@ -13,10 +13,10 @@ random_sex_pic_url = "https://api.lolicon.app/setu/v2"
 
 reverse_proxy = "http://45.140.88.20:3777/"
 
-directory_path = getcwd() + sep + "sex_picture_repository" + sep
+sex_pic_directory_path = getcwd() + sep + "sex_picture_repository" + sep
 
-if not path.exists(directory_path):
-    mkdir(directory_path)
+if not path.exists(sex_pic_directory_path):
+    mkdir(sex_pic_directory_path)
 
 
 def walk(obj):
@@ -28,7 +28,7 @@ def walk(obj):
                         data={
                             "URL": url
                         })
-    f = open(directory_path + obj["title"] + ".jpg", "wb+")
+    f = open(sex_pic_directory_path + obj["title"] + ".jpg", "wb+")
     f.write(res.content)
     f.close()
 
@@ -49,21 +49,25 @@ def expend_sex_picture_repository(mailbox):
 
 @sex_pic_bp.post("/")
 @need_login
-def get_random_sex_picture_name(mailbox):
-    pic_list = listdir(directory_path)
-    size = len(pic_list)
-    pic_name = pic_list[random.randint(0, size - 1)]
-    return res({
-        "pic": pic_name
-    }), 200
+def get_sex_picture_name(mailbox):
+    is_random = request.form.get("random")
+    if is_random is not None:
+        pic_list = listdir(sex_pic_directory_path)
+        size = len(pic_list)
+        pic_name = pic_list[random.randint(0, size - 1)]
+        return res({
+            "pic": pic_name
+        }), 200
+    else:
+        return res({"pic_list": listdir(sex_pic_directory_path)})
 
 
 @sex_pic_bp.get('/')
-def get_random_sex_picture():
+async def get_random_sex_picture():
     name = request.args.get("pic")
     if name is None:
         return "", 702
-    if path.exists(directory_path + sep + name):
-        return send_file(directory_path + sep + name)
+    if path.exists(sex_pic_directory_path + sep + name):
+        return send_file(sex_pic_directory_path + sep + name)
     else:
         return "", 703
